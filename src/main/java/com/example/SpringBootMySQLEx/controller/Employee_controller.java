@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.SpringBootMySQLEx.Employee;
@@ -26,5 +27,12 @@ public class Employee_controller {
 //		 emplistEmployees.add(new Employee(103,"troa",70368,"troa@gmail.com"));
 //		 emplistEmployees.add(new Employee(105,"amhu",98438,"amhu@gmail.com"));
 		// return emplistEmployees;
-  }
+    	 
+    	 // Get employee by ID
+	    
+	  }
+     @GetMapping("/employee/{id}")
+	    public Employee getEmployeeById(@PathVariable int id) {
+	        return repo.findById(id).orElse(null);
+	    }
 }
